@@ -4,34 +4,33 @@
       弹出默认键盘
     </van-button>
 
+    <van-field
+            readonly
+            clickable
+            :value="value"
+            @touchstart.native.stop="show = true">
+    </van-field>
+
     <van-number-keyboard
+            v-model="value"
             :show="show"
-            extra-key="."
-            close-button-text="完成"
-            @blur="show = false"
-            @input="onInput"
-            @delete="onDelete"></van-number-keyboard>
+            :maxlength="6"
+            @blur="show = false"></van-number-keyboard>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'home',
   components: {
   },
   data(){
     return{
-      show:true
+      show:false,
+      value: ''
     }
   },
   methods: {
-    onInput(value) {
-      Toast(value);
-    },
-    onDelete() {
-      Toast('删除');
-    }
   }
 }
 </script>
